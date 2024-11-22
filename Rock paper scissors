@@ -1,0 +1,60 @@
+from random import randint
+playAgain = True
+gamesPlayed = 0
+winCount = 0
+lossCount = 0
+drawCount = 0
+# 1 = Rock
+# 2 = Paper
+# 3 = Scissors
+while playAgain == True:
+    computerAnswer = randint(1,3)
+    gamesPlayed = gamesPlayed+1
+    print("Rock, paper or siscors?")
+    userAnswer = input()
+    repeatUserInput = True
+    winStatus = "n/a"
+    while repeatUserInput == True:
+        if userAnswer == "Rock" or userAnswer == "Paper" or userAnswer == "Scissors":
+            if userAnswer == "Rock":
+                userAnswer = int("1")
+                repeatUserInput = False
+            elif userAnswer == "Paper":
+                userAnswer = int("2")
+                repeatUserInput = False
+            elif userAnswer == "Scissors":
+                userAnswer = int("3")
+                repeatUserInput = False
+        else:
+            print("The input you gave the computer is not valid")
+            print("Rock, paper or scissors?")
+            userAnswer = input()
+    if userAnswer == computerAnswer:
+        print("You drew with the computer")
+        drawCount = drawCount+1
+    elif userAnswer == 1 and computerAnswer == 3:
+        print("You win!")
+        winCount = winCount+1
+    elif userAnswer == 2 and computerAnswer == 1:
+        print("You win!")
+        winCount = winCount+1
+    elif userAnswer == 3 and computerAnswer == 2:
+        print("You win!")
+        winCount = winCount+1
+    elif computerAnswer == 1 and userAnswer == 3:
+        print("You lose")
+        lossCount = lossCount+1
+    elif computerAnswer == 2 and userAnswer == 1:
+        print("You lose")
+        lossCount = lossCount+1
+    elif computerAnswer == 3 and userAnswer == 2:
+        print("You lose")
+        lossCount = lossCount+1
+
+    print("Do you want to play again?")
+    print("Yes or No")
+    playAgain = input()
+    if playAgain == "Yes":
+        playAgain = True
+    else:
+        print("You won", winCount, "lost", lossCount, "and drew", drawCount, "out of", gamesPlayed, "games")
